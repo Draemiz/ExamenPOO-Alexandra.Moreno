@@ -7,13 +7,12 @@ import com.krakedev.examen.servicios.AdminVentas;
 
 public class TestAdmin {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		AdminVentas admin = new AdminVentas();
-		
-		// Vendedor normal
-        Vendedor vendedor = new Vendedor("111111111");
+    public static void main(String[] args) {
+
+        AdminVentas admin = new AdminVentas();
+
+        // Vendedor normal
+        Vendedor vendedor = new Vendedor("111111111", "V");
         vendedor.setSueldoFijo(500);
 
         // Vendedor comision
@@ -26,24 +25,23 @@ public class TestAdmin {
         vndmx.setSueldoFijo(1000);
         vndmx.setNumeroVentas(10);
 
-        // Agregar
+        // Agregar vendedores
         admin.agregar(vendedor);
         admin.agregar(vndcom);
         admin.agregar(vndmx);
-        
-     // Calcular sueldos
-        System.out.println("Sueldo vendedor: "
+
+        // Calcular sueldos
+        System.out.println("Sueldo vendedor normal: "
                 + admin.calcularSueldo("111111111"));
 
-        System.out.println("Comision de vendedor por ventas realizadas: "
+        System.out.println("Sueldo vendedor comision: "
                 + admin.calcularSueldo("222222222"));
 
-        System.out.println("Sueldo vendedor más sus ventas: "
+        System.out.println("Sueldo vendedor mixto: "
                 + admin.calcularSueldo("333333333"));
-        
-     // Probar cedula inexistente
+
+        // Cedula inexistente
         System.out.println("Cedula inexistente: "
                 + admin.calcularSueldo("999999999"));
     }
-
 }

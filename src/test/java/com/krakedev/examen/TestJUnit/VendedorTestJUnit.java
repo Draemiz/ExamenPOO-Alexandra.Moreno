@@ -10,7 +10,7 @@ public class VendedorTestJUnit {
 	@Test
     public void testCalcularSueldo() {
 
-        Vendedor vendedor = new Vendedor("123");
+        Vendedor vendedor = new Vendedor("111111111","V");
 
         vendedor.setSueldoFijo(500);
 

@@ -6,9 +6,20 @@ public class Vendedor {
 	private int numeroVentas;
 	private double sueldoFijo;
 	private double comisionPorVenta;
+	private String tipo;
 
-	public Vendedor(String cedula) {
+	public Vendedor(String cedula, String tipo) {
 		this.cedula = cedula;
+	}
+	
+	//Getters y Setters
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getCedula() {
@@ -50,7 +61,7 @@ public class Vendedor {
 	@Override
 	public String toString() {
 		return "Vendedor: cedula: " + cedula + ", numero de ventas: " + numeroVentas + ", sueldo Fijo: " + sueldoFijo
-				+ ", comision por venta: " + comisionPorVenta + ".";
+				+ ", comision por venta: " + comisionPorVenta + ", tipo de vendedor:" + tipo +".";
 	}
 
 }
