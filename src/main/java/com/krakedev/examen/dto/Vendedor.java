@@ -49,8 +49,8 @@ public class Vendedor {
 
 	@Override
 	public String toString() {
-		return "Vendedor: cedula:" + cedula + ", numero de ventas:" + numeroVentas + ", sueldo Fijo:" + sueldoFijo
-				+ ", comision por venta=" + comisionPorVenta + ".";
+		return "Vendedor: cedula: " + cedula + ", numero de ventas: " + numeroVentas + ", sueldo Fijo: " + sueldoFijo
+				+ ", comision por venta: " + comisionPorVenta + ".";
 	}
 
 }
