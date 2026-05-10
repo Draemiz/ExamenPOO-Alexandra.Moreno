@@ -2,6 +2,10 @@ package com.krakedev.examen.dto;
 
 public class VendedorMixto extends Vendedor{
 	
+	public VendedorMixto() {
+	    super();
+	}
+	
 	public VendedorMixto(String cedula) {
         super(cedula, "M");
     }

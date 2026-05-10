@@ -5,29 +5,29 @@ import java.util.ArrayList;
 import com.krakedev.examen.dto.Vendedor;
 
 public class AdminVentas {
-	
-	private ArrayList<Vendedor> vendedores;
-	
-	public AdminVentas() {
-        vendedores = new ArrayList<Vendedor>();
+
+	private static ArrayList<Vendedor> vendedores;
+
+    public AdminVentas() {
+
+        if (vendedores == null) {
+            vendedores = new ArrayList<Vendedor>();
+        }
     }
-	
-	
+	    
 	//meetodo agregar vendedor
-	public void agregar(Vendedor vendedor) {
-        vendedores.add(vendedor);
-    }
+	    public void agregar(Vendedor vendedor) {
+	        vendedores.add(vendedor);
+	    }
 	
 	//método calcularSueldo
-    public Double calcularSueldo(String cedula) {
+	    public Double calcularSueldo(String cedula) {
+	        for (Vendedor vendedor : vendedores) {
+	            if (vendedor.getCedula().equals(cedula)) {
+	                return vendedor.calcularSueldo();
+	            }
+	        }
 
-        for (Vendedor vendedor : vendedores) {
-            if (vendedor.getCedula().equals(cedula)) {
-                return vendedor.calcularSueldo();
-            }
-        }
-        return null;
-    }
-    
-}
-
+	        return null;
+	    }
+	}
