@@ -30,4 +30,9 @@ public class AdminVentas {
 
 	        return null;
 	    }
+	    
+	    public ArrayList<Vendedor> obtenerTodos() {
+
+	        return vendedores;
+	    }
 	}

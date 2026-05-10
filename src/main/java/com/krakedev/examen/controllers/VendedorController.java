@@ -1,5 +1,7 @@
 package com.krakedev.examen.controllers;
 
+import java.util.ArrayList;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,30 +15,34 @@ import com.krakedev.examen.servicios.AdminVentas;
 
 @RestController
 public class VendedorController {
-	
-	private AdminVentas admin;
+
+    private AdminVentas admin;
+
     public VendedorController() {
 
         admin = new AdminVentas();
     }
 
     @PostMapping("/vendedores")
-    public void agregarVendedor(@RequestBody Vendedor vendedor) {
+    public String agregarVendedor(@RequestBody Vendedor vendedor) {
 
         if (vendedor.getTipo().equals("V")) {
 
-            Vendedor v = new Vendedor(
-                    vendedor.getCedula(),
-                    vendedor.getTipo());
+        	Vendedor v = new Vendedor(
+        	        vendedor.getCedula(),
+        	        vendedor.getTipo());
 
-            v.setSueldoFijo(vendedor.getSueldoFijo());
+        	v.setTipo("V");
+        	v.setSueldoFijo(vendedor.getSueldoFijo());
 
-            admin.agregar(v);
+        	admin.agregar(v);
 
         } else if (vendedor.getTipo().equals("C")) {
 
             VendedorComision vc =
                     new VendedorComision(vendedor.getCedula());
+
+            vc.setTipo("C");
 
             vc.setComisionPorVenta(
                     vendedor.getComisionPorVenta());
@@ -51,6 +57,8 @@ public class VendedorController {
             VendedorMixto vm =
                     new VendedorMixto(vendedor.getCedula());
 
+            vm.setTipo("M");
+
             vm.setSueldoFijo(
                     vendedor.getSueldoFijo());
 
@@ -59,6 +67,8 @@ public class VendedorController {
 
             admin.agregar(vm);
         }
+
+        return "Vendedor agregado correctamente";
     }
 
     @GetMapping("/vendedores/{cedula}")
@@ -67,5 +77,10 @@ public class VendedorController {
 
         return admin.calcularSueldo(cedula);
     }
+
+    @GetMapping("/vendedores")
+    public ArrayList<Vendedor> obtenerVendedores() {
+
+        return admin.obtenerTodos();
+    }
 }
-    
